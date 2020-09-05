@@ -8,13 +8,13 @@ import {
   CardHeader,
   FormGroup,
 } from "reactstrap";
-import { AppContext } from "AppContext";
+import { BoardContext } from "components/Board/BoardContext";
 import { Draggable } from "react-beautiful-dnd";
 import style from "./_task.module.scss";
 import { If } from "utils";
 
 const Task = ({ content, id, column, index, editing }) => {
-  const { task } = useContext(AppContext);
+  const { task } = useContext(BoardContext);
   const [value, setValue] = useState(content);
   const [errors, setErrors] = useState({});
   const update = () => {

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { localStore } from "utils";
-const AppContext = React.createContext();
+const BoardContext = React.createContext();
 
-const AppProvider = ({ children }) => {
-  const [columns, setColumns] = useState(localStore.get("tasks"));
+const BoardProvider = ({ children, DATA_REF }) => {
+  const [columns, setColumns] = useState(localStore.get(DATA_REF || []));
   useEffect(() => {
-    localStore.update("tasks", columns);
+    localStore.update(DATA_REF, columns);
   }, [columns]);
 
   const updateTask = (taskId, { column: columnId, ...value }) => {
@@ -89,7 +89,9 @@ const AppProvider = ({ children }) => {
     task: { update: updateTask, delete: deleteTask, move },
     column: { update: updateColumn, addTask },
   };
-  return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
+  return (
+    <BoardContext.Provider value={context}>{children}</BoardContext.Provider>
+  );
 };
 
-export { AppContext, AppProvider };
+export { BoardContext, BoardProvider };

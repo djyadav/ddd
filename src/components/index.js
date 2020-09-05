@@ -1,3 +1,4 @@
 import Column from "./Column";
 import Task from "./Task";
-export { Column, Task };
+import Board from "./Board";
+export { Column, Task, Board };

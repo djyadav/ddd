@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Row, Col } from "reactstrap";
 import { Column } from "components";
-import { AppContext } from "AppContext";
+import { BoardContext } from "components/Board/BoardContext";
+
 import { DragDropContext } from "react-beautiful-dnd";
-const Board = () => {
-  const { task, columns } = useContext(AppContext);
+const Board = ({ count }) => {
+  const { task, columns } = useContext(BoardContext);
   const onDragEnd = (e) => {
     const { source, destination } = e;
     if (!destination) return;
@@ -19,9 +20,9 @@ const Board = () => {
   };
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <Row>
+      <Row className="bg-light pt-5">
         {columns.map((column, index) => (
-          <Col lg="4" className="mb-4">
+          <Col lg={12 / count} className="mb-4">
             <Column
               addTask={task.add}
               key={column.id}

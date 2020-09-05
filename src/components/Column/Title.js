@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import style from "./_column.module.scss";
 import { CardTitle, Input, FormGroup } from "reactstrap";
-import { AppContext } from "AppContext";
+import { BoardContext } from "components/Board/BoardContext";
 import { If } from "utils";
 
 const Title = ({ title, addTask, column: columnId }) => {
-  const { column } = useContext(AppContext);
+  const { column } = useContext(BoardContext);
   const [editing, setEditing] = useState(false);
   const [value, setValue] = useState(title);
   const [errors, setErrors] = useState({});
