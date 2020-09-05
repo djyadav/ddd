@@ -1,0 +1,18 @@
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  background: #dee2e6;
+  padding: 10px;
+  text-align: center;
+}
+.link {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.7);
+  transition: all 0.3s;
+  &:hover {
+    text-decoration: underline;
+    color: rgba(0, 0, 0, 0.7);
+  }
+}
