@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import style from "./_column.module.scss";
-import { Card, CardBody, CardTitle, Input, FormGroup } from "reactstrap";
+import { CardTitle, Input, FormGroup } from "reactstrap";
 import { AppContext } from "AppContext";
 import { If } from "utils";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Card, Container } from "reactstrap";
+import { Container } from "reactstrap";
 import Board from "views/Board";
 import { AppProvider } from "AppContext";
 function App() {

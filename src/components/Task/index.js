@@ -1,19 +1,15 @@
 import React, { useState, useContext } from "react";
 import {
-  Row,
-  Col,
   Card,
   Button,
-  CardTitle,
   CardBody,
   Input,
   CardFooter,
   CardHeader,
-  Label,
   FormGroup,
 } from "reactstrap";
 import { AppContext } from "AppContext";
-import { Droppable, Draggable } from "react-beautiful-dnd";
+import { Draggable } from "react-beautiful-dnd";
 import style from "./_task.module.scss";
 import { If } from "utils";
 
@@ -28,7 +24,7 @@ const Task = ({ content, id, column, index, editing }) => {
       });
       return;
     }
-    const val = task.update(id, {
+    task.update(id, {
       column,
       content: value,
       editing: false,

@@ -3,7 +3,6 @@ import { localStore } from "utils";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  const [tasks, setTasks] = useState(localStore.get("tasks"));
   const [columns, setColumns] = useState(localStore.get("tasks"));
   useEffect(() => {
     localStore.update("tasks", columns);
@@ -43,20 +42,11 @@ const AppProvider = ({ children }) => {
     setColumns(updatedColumns);
   };
 
-  const updateTasks = (tasks) => {
-    setTasks(tasks);
-  };
   const updateColumn = (columnId, { title }) => {
-    console.log("columns", columnId);
     const columnIndex = columns.findIndex(({ id }) => id === columnId);
     const updatedColumns = [...columns];
     updatedColumns[columnIndex].title = title;
     setColumns(updatedColumns);
-    // const columnTasks = [...tasks[column]]
-    // const updatedTasks = { ...tasks};
-    // delete updatedTasks[column];
-    //
-    // setTasks(updatedTasks);
   };
   const move = (source, destination) => {
     let updatedColumns = [...columns];
@@ -66,9 +56,6 @@ const AppProvider = ({ children }) => {
 
       const sourceColumnIndex = updatedColumns.findIndex(
         ({ id }) => id === source.droppableId
-      );
-      const destinationColumnIndex = updatedColumns.findIndex(
-        ({ id }) => id === destination.droppableId
       );
 
       const arr = updatedColumns[sourceColumnIndex].tasks.slice();
@@ -94,14 +81,11 @@ const AppProvider = ({ children }) => {
 
       updatedColumns[sourceColumnIndex].tasks = sourceArr;
       updatedColumns[destinationColumnIndex].tasks = destinationArr;
-      // updatedTasks[source.droppableId] = sourceArr;
-      // updatedTasks[destination.droppableId] = destinationArr;
     }
     setColumns(updatedColumns);
   };
   const context = {
     columns,
-    updateTasks,
     task: { update: updateTask, delete: deleteTask, move },
     column: { update: updateColumn, addTask },
   };

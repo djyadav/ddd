@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { Droppable, Draggable } from "react-beautiful-dnd";
+import React from "react";
+import { Droppable } from "react-beautiful-dnd";
 import Task from "components/Task";
-import { Card, CardBody, CardTitle } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 import Title from "./Title";
 import style from "./_column.module.scss";
 const Column = ({ title, tasks, id: column, addTask }) => {
