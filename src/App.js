@@ -4,7 +4,7 @@ import Boards from "views/Boards";
 import { Footer } from "components";
 function App() {
   return (
-    <Container className="mt-5">
+    <Container className="mt-5 mb-5">
       <Boards />
       <Footer />
     </Container>

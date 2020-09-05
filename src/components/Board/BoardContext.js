@@ -3,10 +3,10 @@ import { localStore } from "utils";
 const BoardContext = React.createContext();
 
 const BoardProvider = ({ children, DATA_REF }) => {
-  const [columns, setColumns] = useState(localStore.get(DATA_REF || []));
+  const [columns, setColumns] = useState(localStore.get(DATA_REF) || []);
   useEffect(() => {
     localStore.update(DATA_REF, columns);
-  }, [columns]);
+  }, [columns, DATA_REF]);
 
   const updateTask = (taskId, { column: columnId, ...value }) => {
     const columnIndex = columns.findIndex(({ id }) => id === columnId);
@@ -89,6 +89,8 @@ const BoardProvider = ({ children, DATA_REF }) => {
     task: { update: updateTask, delete: deleteTask, move },
     column: { update: updateColumn, addTask },
   };
+  if (!columns || columns.length < 1)
+    return "Please reset storage using link in the footer. We'll add the functionality to create column soon";
   return (
     <BoardContext.Provider value={context}>{children}</BoardContext.Provider>
   );
