@@ -3,9 +3,10 @@ import { Droppable, Draggable } from "react-beautiful-dnd";
 import Task from "components/Task";
 import { Card, CardBody, CardTitle } from "reactstrap";
 import Title from "./Title";
+import style from "./_column.module.scss";
 const Column = ({ title, tasks, id: column, addTask }) => {
   return (
-    <Card>
+    <Card className={style.column}>
       <Title title={title} addTask={addTask} column={column} />
       <Droppable droppableId={column}>
         {(provided) => (

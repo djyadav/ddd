@@ -1,5 +1,10 @@
+.column {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
 .title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background: #5a5bff;
+  color: #fff;
   padding: 5px;
   span {
     height: 35px;
@@ -13,19 +18,20 @@
   position: absolute;
   right: 0px;
   top: 0px;
-  i {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+  & i {
+    border: 1px solid rgba(255, 255, 255, 0.2);
     display: inline-block;
     padding: 9px;
     width: 35px;
     height: 35px;
     margin: 5px;
 
-    color: rgba(0, 0, 0, 0.7);
+    color: rgba(255, 255, 255, 0.7);
     transition: all 0.3s;
     cursor: pointer;
     &:hover {
-      color: rgba(0, 0, 0, 1);
+      background: #fff;
+      color: rgba(0, 0, 0, 0.7);
     }
   }
 }

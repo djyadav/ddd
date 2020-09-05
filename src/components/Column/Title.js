@@ -17,7 +17,7 @@ const Title = ({ title, addTask, column: columnId }) => {
     setEditing(false);
   };
   const update = () => {
-    if (value || value.length < 2) {
+    if (!value || value.length < 2) {
       setErrors({
         title: "Min 2 characters required.",
       });
@@ -27,7 +27,7 @@ const Title = ({ title, addTask, column: columnId }) => {
     setEditing(false);
   };
   return (
-    <CardTitle className={style.title}>
+    <CardTitle className={`${style.title} `}>
       <If test={!editing}>
         <span>{title}</span>
       </If>
