@@ -1,25 +1,31 @@
 import React from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
-import style from "./_board.module.scss";
+import style from "./_column.module.scss";
 import TaskList from "./TaskList";
 import { Card, CardBody, CardTitle } from "reactstrap";
-function App({ title, tasks, id }) {
+const Column = ({ title, tasks, id, addTask }) => {
   return (
-    <Card className={style.board} data-id={id}>
+    <Card className={style.column} data-id={id}>
       <CardTitle className={style.title}>
         {title}
-        <i className={`fas fa-plus ${style.add}`} color="primary" />
+        <i
+          className={`fas fa-plus ${style.add}`}
+          color="primary"
+          onClick={() => {
+            addTask({ column: id });
+          }}
+        />
       </CardTitle>
       <Droppable droppableId={id}>
         {(provided) => (
           <CardBody innerRef={provided.innerRef} {...provided.droppableProps}>
-            <TaskList tasks={tasks} />
+            <TaskList tasks={tasks} column={id} />
             {provided.placeholder}
           </CardBody>
         )}
       </Droppable>
     </Card>
   );
-}
+};
 
-export default App;
+export default Column;

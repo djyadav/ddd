@@ -4,7 +4,7 @@ import { Column } from "components";
 import { AppContext } from "AppContext";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 const Board = () => {
-  const { tasks, updateTasks } = useContext(AppContext);
+  const { tasks, updateTasks, task } = useContext(AppContext);
   const onDragEnd = (e) => {
     const { source, destination } = e;
     if (!destination) return;
@@ -38,6 +38,7 @@ const Board = () => {
           {columns.map(({ title, key }, index) => (
             <Col lg="4">
               <Column
+                addTask={task.add}
                 key={key}
                 index={index}
                 title={title}
@@ -46,7 +47,6 @@ const Board = () => {
               />
             </Col>
           ))}
-          )}
         </Row>
       </div>
     </DragDropContext>
