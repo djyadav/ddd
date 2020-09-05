@@ -10,6 +10,7 @@ import {
   CardFooter,
   CardHeader,
   Label,
+  FormGroup,
 } from "reactstrap";
 import { AppContext } from "AppContext";
 import { Droppable, Draggable } from "react-beautiful-dnd";
@@ -19,7 +20,14 @@ import { If } from "utils";
 const Task = ({ content, id, column, index, editing }) => {
   const { task } = useContext(AppContext);
   const [value, setValue] = useState(content);
+  const [errors, setErrors] = useState({});
   const update = () => {
+    if (!value || value.length < 2) {
+      setErrors({
+        content: "Min 2 characters required.",
+      });
+      return;
+    }
     const val = task.update(id, {
       column,
       content: value,
@@ -52,13 +60,18 @@ const Task = ({ content, id, column, index, editing }) => {
           </CardHeader>
           <If test={editing}>
             <CardBody>
-              <Input
-                placeholder="Content"
-                value={value}
-                onChange={(e) => {
-                  setValue(e.target.value);
-                }}
-              />
+              <FormGroup>
+                <Input
+                  placeholder="Content"
+                  value={value}
+                  invalid={errors.content}
+                  onChange={(e) => {
+                    setValue(e.target.value);
+                    setErrors({});
+                  }}
+                />
+                <div className="invalid-feedback">{errors.content}</div>
+              </FormGroup>
             </CardBody>
           </If>
 
