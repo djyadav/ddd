@@ -1,14 +1,35 @@
-.add {
+.title {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  span {
+    height: 35px;
+    font-weight: 400;
+    padding: 5px;
+    display: block;
+    line-height: 1.5;
+  }
+}
+.actions {
   position: absolute;
   right: 0px;
   top: 0px;
-  padding: 9px;
-  border-left: 1px solid rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+  i {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    padding: 9px;
+    width: 35px;
+    height: 35px;
+    margin: 5px;
+
+    color: rgba(0, 0, 0, 0.7);
+    transition: all 0.3s;
+    cursor: pointer;
+    &:hover {
+      color: rgba(0, 0, 0, 1);
+    }
+  }
 }
-.title {
-  padding-left: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+.input {
+  width: calc(100% - 85px);
+  height: 35px;
 }

@@ -1,25 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
-import style from "./_column.module.scss";
-import TaskList from "./TaskList";
+import Task from "components/Task";
 import { Card, CardBody, CardTitle } from "reactstrap";
-const Column = ({ title, tasks, id, addTask }) => {
+import Title from "./Title";
+const Column = ({ title, tasks, id: column, addTask }) => {
   return (
-    <Card className={style.column} data-id={id}>
-      <CardTitle className={style.title}>
-        {title}
-        <i
-          className={`fas fa-plus ${style.add}`}
-          color="primary"
-          onClick={() => {
-            addTask({ column: id });
-          }}
-        />
-      </CardTitle>
-      <Droppable droppableId={id}>
+    <Card>
+      <Title title={title} addTask={addTask} column={column} />
+      <Droppable droppableId={column}>
         {(provided) => (
           <CardBody innerRef={provided.innerRef} {...provided.droppableProps}>
-            <TaskList tasks={tasks} column={id} />
+            {tasks.map((task, index) => {
+              return (
+                <Task {...task} key={task.id} index={index} column={column} />
+              );
+            })}
+
             {provided.placeholder}
           </CardBody>
         )}
