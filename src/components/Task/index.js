@@ -21,8 +21,8 @@ const Task = ({ content, id, column, index, editing }) => {
   const [value, setValue] = useState(content);
   const update = () => {
     const val = task.update(id, {
-      content: value,
       column,
+      content: value,
       editing: false,
     });
   };
