@@ -1,3 +1,8 @@
+# Experimenting with Drag and Drop in a ReactJs application
+Using [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd)
+
+Try this out at:  [https://task-manager-2.netlify.app/](https://task-manager-2.netlify.app/). 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
